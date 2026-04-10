@@ -3,10 +3,12 @@ from sqlalchemy.orm import Session
 from typing import Optional, List
 import models, schemas, crud
 from database import engine, SessionLocal
+import user_schemas
+import user_models 
 
 # Create all DB tables on startup
 models.Base.metadata.create_all(bind=engine) 
-
+user_models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 # Dependency gives each request its own DB session, closes it after
